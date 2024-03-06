@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search</title>
+</head>
+<body>
+    <h1>Recipe Search</h1>
+    <form action="/recipe" method="post">
+        <label for="query">Enter your recipe query:</label><br>
+        <input type="text" id="query" name="query"><br>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="recipe-info"></div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch('/recipe', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            const recipeInfoDiv = document.getElementById('recipe-info');
+            if (data.error) {
+                recipeInfoDiv.textContent = data.error;
+            } else {
+                let html = '<h2>' + data.title + '</h2>';
+                html += '<h3>Ingredients:</h3><ul>';
+                data.ingredients.forEach(ingredient => {
+                    html += '<li>' + ingredient + '</li>';
+                });
+                html += '</ul>';
+                html += '<img src="' + data.image_url + '" alt="Recipe Image">';
+                html += '<p>Instructions URL: <a href="' + data.instructions_url + '">' + data.instructions_url + '</a></p>';
+                recipeInfoDiv.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+</html>
