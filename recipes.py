@@ -20,7 +20,7 @@ def search_recipes(query):
     """Searches for recipes based on the given query using the Food Recipes with Images API."""
     url = "https://food-recipes-with-images.p.rapidapi.com/"
     headers = {
-        "X-RapidAPI-Key": "10293c49f1mshad7aa6bc1165ce9p19aed4jsnb7a764a892f7",
+        "X-RapidAPI-Key": os.getenv("X_RAPIDAPI_KEY"),
         "X-RapidAPI-Host": "food-recipes-with-images.p.rapidapi.com"
     }
     querystring = {"q": query}
@@ -105,7 +105,6 @@ if __name__ == "__main__":
     response = get_response(thread_id, assistant_id)
 
     print("Response from OpenAI:")
-   
 
     try:
         data = json.loads(response)
