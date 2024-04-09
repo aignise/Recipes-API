@@ -2,6 +2,43 @@
 
 This is a Flask web application that allows users to search for recipes using the Food Recipes with Images API and generate recipe recommendations with the help of OpenAI's GPT-3 model.
 
+# Search Recipes Function
+
+This Python function `search_recipes` utilizes the RapidAPI to search for recipes based on the provided query.
+
+## Parameters
+
+- `query`: The search query for recipes.
+
+## Returns
+
+The function returns JSON data containing information about the recipes matching the query.
+
+# Extract Recipe Information Function
+
+This Python function `extract_recipe_info` extracts relevant information from a recipe JSON object, including title, ingredients, image URL, and instructions URL.
+
+## Parameters
+
+- `recipe`: A dictionary containing information about a recipe.
+
+## Returns
+
+The function returns a tuple containing the extracted recipe information.
+
+# Main Program
+
+This Python script `main.py` interacts with the user to provide recipe assistance or general assistance using the `search_recipes` and `extract_recipe_info` functions.
+
+## Steps to Run
+
+1. Set up a virtual environment and install the required dependencies (`dotenv`, `requests`).
+2. Obtain API keys for RapidAPI and OpenAI, and set them in the `.env` file.
+3. Execute the `main.py` script.
+4. Choose the type of assistance required (recipe or general) and follow the prompts.
+5. The script will provide recipe information or respond to general queries accordingly.
+6. Optionally, the user can request further assistance or choose to exit.
+
 ## Prerequisites
 
 Before running the application, make sure you have Python installed on your system. You'll also need to install the required dependencies listed in the `requirements.txt` file.
