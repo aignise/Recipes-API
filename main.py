@@ -16,7 +16,7 @@ def main():
             break
 
         start(thread_id, prompt)
-        response = get_response(thread_id, assistant_id)
+        response = get_response(thread_id, assistant_id, prompt)
         print("Agent: ", response)
 
 
